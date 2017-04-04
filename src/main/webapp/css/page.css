@@ -1,0 +1,39 @@
+body{
+    margin: auto;
+    width: 500px;
+    background: lightskyblue;
+    text-align: center;
+
+}
+
+.header{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background: orange;
+    padding:10px;
+    text-align: left;
+}
+.zuoduiqi{
+    padding-left: 5%;
+    display: inline;
+}
+.youduiqi{
+    padding-left: 60%;
+    display: inline;
+}
+.q1{
+    margin-top: 100px;
+    border: 10px;
+    solid-color: blank;
+}
+.f1{
+    margin-top: 100px;
+    font-size:20px;
+}
+.ta{
+    resize:none;
+    width:600px;
+    height: 100px;
+}

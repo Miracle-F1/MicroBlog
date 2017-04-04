@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project.DAO.BlogDAO">
+
+
+    <resultMap id="BlogMap" type="project.model.Blog">
+        <id property="blogid" column="blog_id"/>
+        <result property="username" column="username"/>
+        <result property="content" column="content"/>
+        <result property="blogtime" column="blog_time"/>
+        <result property="commentnum" column="comment_num"/>
+    </resultMap>
+
+    <resultMap id ="CommentMap" type="project.model.Comment">
+        <id property="commentid" column="comment_id"/>
+        <result property="blogid" column="blog_id"/>
+        <result property="username" column="username"/>
+        <result property="content" column="content"/>
+        <result property="commenttime" column="comment_time"/>
+    </resultMap>
+
+    <insert id="addBlog">
+        insert into blog(username,content,blog_time) values(#{blog.username},#{blog.content},#{blog.blogtime})
+    </insert>
+
+    <select id="getMyBlogList" resultMap="BlogMap">
+        select * from blog where username = #{username}
+    </select>
+
+    <select id="getBlog" resultMap="BlogMap">
+        select * from blog where blog_id = #{blogid}
+    </select>
+
+    <insert id="addComment">
+        insert into comment(username,content,blog_id,comment_time) values(#{comment.username},#{comment.content},#{comment.blogid},#{comment.commenttime})
+    </insert>
+
+    <select id="getCommentList" resultMap="CommentMap">
+        select * from comment where blog_id = #{blogid}
+    </select>
+
+    <update id="commentNumPlus">
+        update blog set comment_num = comment_num + 1 where blog_id=#{blogid}
+    </update>
+</mapper>

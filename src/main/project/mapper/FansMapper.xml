@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project.DAO.FansDAO">
+
+    <resultMap id="followMap" type="project.model.Follow">
+        <id property="followid" column="follow_id"/>
+        <result property="focus" column="focus"/>
+        <result property="fans" column="fans"/>
+    </resultMap>
+
+    <!-- 增加一条数据-->
+    <insert id="save" >
+      insert into follow(focus,fans) values(#{focus},#{fans})
+    </insert>
+
+    <!-- 删除一条数据-->
+    <delete id="delete">
+        delete from follow where focus=#{focus} and fans=#{fans}
+    </delete>
+
+    <!-- 获取关注列表-->
+    <select id="getFollowList" resultMap="followMap">
+        select * from follow where fans=#{fans}
+    </select>
+
+    <!-- 获取粉丝列表-->
+    <select id="getFansList" resultMap="followMap">
+        select * from follow where focus=#{focus}
+    </select>
+
+</mapper>
